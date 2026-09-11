@@ -1,0 +1,33 @@
+# Python
+__pycache__/
+*.py[cod]
+*.so
+.venv/
+venv/
+env/
+.ipynb_checkpoints/
+
+# Local data and archives
+data/raw/
+data/external/
+*.tar
+*.tar.gz
+*.zip
+
+# Model checkpoints and large binary artifacts
+models/
+checkpoints/
+*.pt
+*.pth
+*.ckpt
+*.joblib
+
+# Temporary outputs
+*.tmp
+*.log
+.DS_Store
+Thumbs.db
+
+# IDE/editor
+.vscode/
+.idea/
