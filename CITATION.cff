@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+message: "If you use this software or computational workflow, please cite the archived release and associated preprint when available."
+title: "Intelligent Microscopy for Materials"
+type: software
+authors:
+  - family-names: "Orji"
+    given-names: "Dennis Obinna"
+repository-code: "https://github.com/dennisorji/intelligent-microscopy-materials"
+url: "https://github.com/dennisorji/intelligent-microscopy-materials"
+license: MIT
+version: 0.1.0
+keywords:
+  - scanning electron microscopy
+  - SEM
+  - materials informatics
+  - machine learning
+  - deep learning
+  - transfer learning
+  - uncertainty calibration
+  - Grad-CAM
+  - artifact robustness
+  - image classification
