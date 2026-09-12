@@ -1,38 +1,42 @@
 # Intelligent Microscopy for Materials
 
-A reproducible machine-learning study of scanning electron microscopy (SEM) morphology classification, with emphasis on **dataset integrity, leakage control, class imbalance, transfer learning, uncertainty calibration, explainability, and artifact robustness**.
+A reproducible materials-informatics study of **scanning electron microscopy (SEM) morphology classification**, designed around dataset integrity, leakage control, class imbalance, transfer learning, uncertainty calibration, explainability, and artifact robustness.
 
-> **Project status:** pre-release research repository. The computational study is complete; repository packaging and preprint preparation are in progress.
+## Scientific question
 
-## Research scope
+How much can SEM morphology classification improve when the workflow treats **data integrity and model reliability** as first-class research problems rather than optimizing accuracy alone?
 
-This project evaluates a progressively stronger set of SEM image-classification approaches while keeping the train/validation/test partitions fixed across experiments:
+The project therefore combines duplicate control, fixed leakage-safe splits, classical and deep-learning baselines, calibration, Grad-CAM, controlled annotation-region perturbation, and selective prediction.
 
-1. dataset audit, duplicate control, artifact screening, and leakage-safe splitting;
-2. classical image descriptors with machine-learning baselines;
-3. a convolutional neural network trained from scratch;
-4. ImageNet-pretrained ResNet-18 transfer learning;
-5. uncertainty calibration, Grad-CAM, failure analysis, artifact perturbation, and selective prediction.
+## Headline results
 
-The goal is not only to obtain high classification performance, but to assess whether the resulting model behaviour is **reliable, interpretable, and robust to acquisition-related image artifacts**.
+| Model | Test accuracy | Balanced accuracy | Macro-F1 |
+|---|---:|---:|---:|
+| Histogram Gradient Boosting | 0.7789 | 0.6713 | 0.6890 |
+| CNN from scratch | 0.7947 | 0.8421 | 0.7425 |
+| **ResNet-18 transfer learning** | **0.942802** | **0.930980** | **0.931633** |
 
-## Dataset
+The final ResNet-18 improves substantially over both the handcrafted classical baseline and the CNN trained from scratch. Temperature scaling fitted **only on validation data** reduced test ECE from **0.0189743** to **0.011369** without changing predicted classes.
 
-The study uses the **NFFA-EUROPE 100% SEM Dataset, version 2.0**, published by Aversa, Modarres, Cozzini, and Ciancio. The source dataset contains 21,169 SEM images assigned to 10 morphology classes and is available from B2SHARE:
+At approximately **90% selective coverage**, retained predictions reached **0.980007 accuracy** while **68.54% of all test errors** were rejected for review. At approximately 80% coverage, retained accuracy reached **0.991566**.
+
+The controlled chromatic-region experiment found measurable decision sensitivity in a small subset of images, but the evidence supports **localized artifact sensitivity rather than broad shortcut dependence**.
+
+## Dataset and integrity controls
+
+The study uses the **NFFA-EUROPE 100% SEM Dataset, version 2.0** from B2SHARE:
 
 https://b2share.eudat.eu/records/zja8y-53j14
 
-Raw images are **not redistributed in this repository**. The notebooks restore the public dataset from the official record when needed.
+Raw images are **not redistributed** in this repository.
 
-## Notebook sequence
+Notebook 01 audits all 21,169 source images. After exact-duplicate removal and high-confidence near-duplicate control, the final modelling set contains **20,742 images**. A single stratified split is frozen for all downstream work:
 
-The complete computational workflow is preserved in five notebooks:
+- Train: 14,519
+- Validation: 3,111
+- Test: 3,112
 
-1. [`01_sem_dataset_audit.ipynb`](notebooks/01_sem_dataset_audit.ipynb) — dataset audit, artifact screening, exact/near-duplicate control, and frozen split construction.
-2. [`02_classical_baseline.ipynb`](notebooks/02_classical_baseline.ipynb) — handcrafted image features and classical ML baselines.
-3. [`03_cnn_from_scratch.ipynb`](notebooks/03_cnn_from_scratch.ipynb) — CNN trained from scratch under the fixed split.
-4. [`04_transfer_learning.ipynb`](notebooks/04_transfer_learning.ipynb) — ImageNet-pretrained ResNet-18 transfer learning and held-out evaluation.
-5. [`05_explainability_uncertainty.ipynb`](notebooks/05_explainability_uncertainty.ipynb) — calibration, high-confidence failure analysis, Grad-CAM, artifact perturbation, and selective prediction.
+Chromatic overlay candidates are retained as an analysis variable rather than automatically discarded.
 
 ## Repository structure
 
@@ -48,43 +52,63 @@ intelligent-microscopy-materials/
 ├── data/
 │   └── README.md
 ├── results/
+│   ├── *.csv
+│   ├── metric_provenance.md
 │   └── README.md
+├── MODEL_CARD.md
+├── REPRODUCIBILITY.md
+├── CHANGELOG.md
 ├── requirements.txt
 ├── CITATION.cff
+├── .zenodo.json
 ├── LICENSE
 └── README.md
 ```
 
-## Reproducibility principles
+## Notebook workflow
 
-The analysis was designed around several controls that are maintained throughout the notebook sequence:
+1. **Dataset audit** — integrity checks, chromatic-overlay screening, exact duplicates, near duplicates, and the fixed train/validation/test split.
+2. **Classical baseline** — handcrafted intensity, edge/gradient, LBP, GLCM, and HOG descriptors with classical classifiers.
+3. **CNN from scratch** — weighted-loss convolutional baseline under the same frozen split.
+4. **Transfer learning** — staged ResNet-18 fine-tuning and one-time held-out evaluation.
+5. **Explainability and uncertainty** — temperature scaling, confidence/error analysis, Grad-CAM, controlled chromatic-region perturbation, and selective prediction.
 
-- exact and near-duplicate screening before modelling;
-- a single frozen stratified train/validation/test split;
-- training-only fitting of preprocessing parameters and class weights;
-- validation-only model and calibration selection;
-- one-time held-out test evaluation after model freezing;
-- explicit class-imbalance reporting with balanced accuracy and macro-F1;
-- post hoc artifact-stratified evaluation and controlled perturbation experiments;
-- preservation of the original saved notebook outputs rather than reconstruction of results after the fact.
+See [`notebooks/README.md`](notebooks/README.md) for notebook-specific notes.
 
-## Notebook execution metadata
+## Reproducibility design
 
-The notebooks are retained as the original Google Colab computational records used during the study. Colab execution-counter metadata is not uniform across the five files: Notebook 1 retains non-sequential counters because selected cells were rerun during development, while Notebooks 2–5 do not display execution counters in the saved copies. **No execution counts were manually reconstructed, renumbered, or fabricated.** Saved outputs, figures, tables, and reported metrics are retained as recorded in the notebooks.
+The workflow maintains:
 
-Non-sequential or absent cell counters should therefore be interpreted as notebook-session metadata rather than as evidence that the scientific workflow was not executed. The intended scientific order is the top-to-bottom notebook sequence documented above.
+- exact and high-confidence near-duplicate control before modelling;
+- one frozen stratified 70/15/15 split;
+- train-only fitting of preprocessing/statistical parameters and class weights;
+- validation-only model/checkpoint and calibration selection;
+- held-out test evaluation only after model selection;
+- balanced accuracy and macro-F1 alongside ordinary accuracy;
+- explicit artifact-stratified and intervention-based checks;
+- transparent preservation of the original Colab notebook state.
+
+See [`REPRODUCIBILITY.md`](REPRODUCIBILITY.md) for execution details.
+
+## Results package
+
+Compact publication-facing tables are available in [`results/`](results/). The executed notebooks remain the complete computational record.
+
+A metric-provenance note is included because the direct Notebook 02 final evaluation reports classical test macro-F1 = **0.6890**, while a later manually assembled comparison cell carries forward 0.6800. Publication-facing results use the direct final evaluation value and document that choice explicitly.
+
+## Model reliability
+
+The final model is not presented as an autonomous scientific decision system. Calibration improves probability quality, but high-confidence errors remain. Grad-CAM provides coarse spatial evidence rather than causal localization, and artifact perturbation should not be interpreted as pure causal isolation.
+
+See [`MODEL_CARD.md`](MODEL_CARD.md) for intended use and limitations.
 
 ## Software environment
 
-The deep-learning notebooks were executed in Google Colab with PyTorch 2.11.0+cu128 and an NVIDIA Tesla T4 GPU. Additional Python dependencies are listed in `requirements.txt`.
+The deep-learning notebooks record **PyTorch 2.11.0+cu128** on an **NVIDIA Tesla T4** in Google Colab. Python dependencies are listed in `requirements.txt`.
 
-## Citation
+## Citation and archival release
 
-Citation metadata are provided in `CITATION.cff`. A versioned archival DOI will be added through Zenodo when the first public release is created.
-
-## Preprint
-
-A ChemRxiv preprint is planned. The manuscript DOI and citation will be added here after posting.
+Citation metadata are provided in `CITATION.cff`, and `.zenodo.json` is prepared for the versioned archival release. The Zenodo DOI and ChemRxiv preprint DOI should be added after those records are minted.
 
 ## Author
 
@@ -92,4 +116,4 @@ A ChemRxiv preprint is planned. The manuscript DOI and citation will be added he
 
 ## License
 
-Code in this repository is released under the MIT License. The external NFFA-EUROPE SEM dataset is not redistributed here and remains subject to the terms of its source repository.
+Code and repository-authored documentation are released under the MIT License. The external NFFA-EUROPE SEM dataset is not redistributed and remains subject to its source repository terms.
