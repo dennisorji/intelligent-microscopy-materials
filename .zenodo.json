@@ -1,0 +1,33 @@
+{
+  "title": "Intelligent Microscopy for Materials: Leakage-Controlled SEM Morphology Classification",
+  "description": "Reproducible SEM morphology classification workflow covering dataset integrity auditing, exact and near-duplicate control, classical machine-learning baselines, CNN training from scratch, ResNet-18 transfer learning, uncertainty calibration, Grad-CAM, controlled artifact perturbation, and selective prediction.",
+  "creators": [
+    {
+      "name": "Orji, Dennis Obinna"
+    }
+  ],
+  "license": {
+    "id": "MIT"
+  },
+  "keywords": [
+    "scanning electron microscopy",
+    "SEM",
+    "materials informatics",
+    "machine learning",
+    "deep learning",
+    "transfer learning",
+    "uncertainty calibration",
+    "Grad-CAM",
+    "artifact robustness",
+    "image classification"
+  ],
+  "upload_type": "software",
+  "access_right": "open",
+  "related_identifiers": [
+    {
+      "identifier": "https://github.com/dennisorji/intelligent-microscopy-materials",
+      "relation": "isSupplementTo",
+      "scheme": "url"
+    }
+  ]
+}
