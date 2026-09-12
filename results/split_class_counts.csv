@@ -1,0 +1,11 @@
+class,train,validation,test
+Biological,670,143,144
+Fibres,105,23,22
+Films/Coated Surface,211,45,45
+MEMS Devices/Electrodes,3195,685,685
+Nanowires,2610,559,559
+Particles,2667,571,572
+Patterned Surface,3249,696,697
+Porous/Sponge,119,26,25
+Powder,596,128,128
+Tips,1097,235,235
