@@ -1,0 +1,9 @@
+model,scope,overlay_status,n_images,accuracy
+CNN from Scratch,all_classes,No overlay,2798,0.7956
+CNN from Scratch,all_classes,Overlay,314,0.7866
+ResNet-18 Transfer Learning,all_classes,No overlay,2798,0.943174
+ResNet-18 Transfer Learning,all_classes,Overlay,314,0.93949
+CNN from Scratch,Patterned Surface,No overlay,525,0.646
+CNN from Scratch,Patterned Surface,Overlay,172,0.855
+ResNet-18 Transfer Learning,Patterned Surface,No overlay,525,0.925714
+ResNet-18 Transfer Learning,Patterned Surface,Overlay,172,0.97093
