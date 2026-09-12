@@ -1,0 +1,4 @@
+model,family,test_accuracy,test_balanced_accuracy,test_macro_f1
+Histogram Gradient Boosting,classical_handcrafted,0.7789,0.6713,0.6890
+CNN from Scratch,cnn_scratch,0.7947,0.8421,0.7425
+ResNet-18 Transfer Learning,transfer_learning,0.942802,0.93098,0.931633
