@@ -1,0 +1,5 @@
+calibrated_confidence_threshold,n_incorrect_above_threshold,fraction_of_all_errors
+0.80,46,0.258427
+0.90,27,0.151685
+0.95,14,0.078652
+0.99,7,0.039326
