@@ -1,0 +1,14 @@
+metric,value,provenance
+original_images,21169,Notebook 01 recovery audit
+valid_images,21169,Notebook 01 recovery audit
+exact_unique_images,20837,Notebook 01 exact deduplication
+exact_duplicates_excluded,332,Notebook 01 exact deduplication
+near_duplicate_groups,92,Notebook 01 near-duplicate grouping
+near_duplicate_images_involved,187,Notebook 01 near-duplicate grouping
+near_duplicates_excluded,95,Notebook 01 near-duplicate representative selection
+final_modelling_images,20742,Notebook 01 final modelling index
+colored_overlay_candidates,2140,Notebook 01 final modelling index
+colored_overlay_prevalence,0.103172307396,Notebook 01 final modelling index
+train_images,14519,Notebook 01 fixed split
+validation_images,3111,Notebook 01 fixed split
+test_images,3112,Notebook 01 fixed split
