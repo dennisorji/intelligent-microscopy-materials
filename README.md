@@ -1,5 +1,7 @@
 # Intelligent Microscopy for Materials
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22720838.svg)](https://doi.org/10.5281/zenodo.22720838)
+
 A reproducible materials-informatics study of **scanning electron microscopy (SEM) morphology classification**, designed around dataset integrity, leakage control, class imbalance, transfer learning, uncertainty calibration, explainability, and artifact robustness.
 
 ## Scientific question
@@ -108,7 +110,11 @@ The deep-learning notebooks record **PyTorch 2.11.0+cu128** on an **NVIDIA Tesla
 
 ## Citation and archival release
 
-Citation metadata are provided in `CITATION.cff`, and `.zenodo.json` is prepared for the versioned archival release. The Zenodo DOI and ChemRxiv preprint DOI should be added after those records are minted.
+The first archival software release is **v1.0.0**, preserved on Zenodo with DOI **10.5281/zenodo.22720838**:
+
+https://doi.org/10.5281/zenodo.22720838
+
+Citation metadata are provided in `CITATION.cff`. The ChemRxiv preprint DOI will be added after the preprint record is published.
 
 ## Author
 
