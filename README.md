@@ -24,6 +24,16 @@ https://b2share.eudat.eu/records/zja8y-53j14
 
 Raw images are **not redistributed in this repository**. The notebooks restore the public dataset from the official record when needed.
 
+## Notebook sequence
+
+The complete computational workflow is preserved in five notebooks:
+
+1. [`01_sem_dataset_audit.ipynb`](notebooks/01_sem_dataset_audit.ipynb) — dataset audit, artifact screening, exact/near-duplicate control, and frozen split construction.
+2. [`02_classical_baseline.ipynb`](notebooks/02_classical_baseline.ipynb) — handcrafted image features and classical ML baselines.
+3. [`03_cnn_from_scratch.ipynb`](notebooks/03_cnn_from_scratch.ipynb) — CNN trained from scratch under the fixed split.
+4. [`04_transfer_learning.ipynb`](notebooks/04_transfer_learning.ipynb) — ImageNet-pretrained ResNet-18 transfer learning and held-out evaluation.
+5. [`05_explainability_uncertainty.ipynb`](notebooks/05_explainability_uncertainty.ipynb) — calibration, high-confidence failure analysis, Grad-CAM, artifact perturbation, and selective prediction.
+
 ## Repository structure
 
 ```text
@@ -33,10 +43,12 @@ intelligent-microscopy-materials/
 │   ├── 02_classical_baseline.ipynb
 │   ├── 03_cnn_from_scratch.ipynb
 │   ├── 04_transfer_learning.ipynb
-│   └── 05_explainability_uncertainty.ipynb
+│   ├── 05_explainability_uncertainty.ipynb
+│   └── README.md
 ├── data/
 │   └── README.md
-├── results/                 # selected lightweight tables/figures for the release
+├── results/
+│   └── README.md
 ├── requirements.txt
 ├── CITATION.cff
 ├── LICENSE
@@ -54,7 +66,13 @@ The analysis was designed around several controls that are maintained throughout
 - one-time held-out test evaluation after model freezing;
 - explicit class-imbalance reporting with balanced accuracy and macro-F1;
 - post hoc artifact-stratified evaluation and controlled perturbation experiments;
-- saved outputs and execution history retained in the original computational notebooks.
+- preservation of the original saved notebook outputs rather than reconstruction of results after the fact.
+
+## Notebook execution metadata
+
+The notebooks are retained as the original Google Colab computational records used during the study. Colab execution-counter metadata is not uniform across the five files: Notebook 1 retains non-sequential counters because selected cells were rerun during development, while Notebooks 2–5 do not display execution counters in the saved copies. **No execution counts were manually reconstructed, renumbered, or fabricated.** Saved outputs, figures, tables, and reported metrics are retained as recorded in the notebooks.
+
+Non-sequential or absent cell counters should therefore be interpreted as notebook-session metadata rather than as evidence that the scientific workflow was not executed. The intended scientific order is the top-to-bottom notebook sequence documented above.
 
 ## Software environment
 
