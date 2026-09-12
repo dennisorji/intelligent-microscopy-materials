@@ -1,0 +1,12 @@
+true_class,predicted_class,n_errors
+MEMS Devices/Electrodes,Patterned Surface,30
+Patterned Surface,MEMS Devices/Electrodes,17
+Patterned Surface,Particles,12
+Tips,Patterned Surface,10
+Nanowires,Particles,9
+MEMS Devices/Electrodes,Tips,9
+Patterned Surface,Tips,7
+Particles,Powder,6
+Patterned Surface,Nanowires,5
+Tips,MEMS Devices/Electrodes,5
+Tips,Nanowires,5
