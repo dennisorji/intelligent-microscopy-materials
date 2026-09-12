@@ -1,0 +1,11 @@
+measure,chromatic_annotation_region,equal_area_control,annotation_control_ratio
+n_images,172,,
+mean_mask_fraction,0.010023,,
+mean_signed_patterned_probability_change,-0.008189,-0.000256,
+mean_absolute_probability_change,0.032553573507,0.002419688158,13.453623515
+prediction_flip_rate,0.023256,0.0,
+prediction_flips,4,0,
+paired_mean_absolute_difference,0.030133885349,,
+paired_median_absolute_difference,0.004316306114,,
+wilcoxon_statistic,444.0,,
+wilcoxon_p_value,1.06971769694e-26,,
