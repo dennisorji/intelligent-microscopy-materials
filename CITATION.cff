@@ -1,11 +1,12 @@
 cff-version: 1.2.0
-message: "If you use this software or computational workflow, please cite the archived Zenodo release and associated preprint when available."
+message: "If you use this software or computational workflow, please cite the associated ChemRxiv preprint. The Zenodo DOI identifies the archived computational release."
 title: "Intelligent Microscopy for Materials: Leakage-Controlled SEM Morphology Classification"
 type: software
 authors:
   - family-names: "Orji"
     given-names: "Dennis Obinna"
-doi: 10.5281/zenodo.22720838
+    orcid: "https://orcid.org/0009-0009-1674-0883"
+doi: "10.5281/zenodo.22720838"
 repository-code: "https://github.com/dennisorji/intelligent-microscopy-materials"
 url: "https://doi.org/10.5281/zenodo.22720838"
 license: MIT
@@ -22,3 +23,13 @@ keywords:
   - Grad-CAM
   - artifact robustness
   - image classification
+preferred-citation:
+  type: article
+  title: "Intelligent Microscopy for Materials: Leakage-Controlled SEM Morphology Classification with Calibration, Explainability, and Artifact Perturbation"
+  authors:
+    - family-names: "Orji"
+      given-names: "Dennis Obinna"
+      orcid: "https://orcid.org/0009-0009-1674-0883"
+  year: 2026
+  doi: "10.26434/chemrxiv.15008876/v1"
+  url: "https://doi.org/10.26434/chemrxiv.15008876/v1"
