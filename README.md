@@ -1,8 +1,17 @@
 # Intelligent Microscopy for Materials
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22720838.svg)](https://doi.org/10.5281/zenodo.22720838)
+[![ChemRxiv](https://img.shields.io/badge/ChemRxiv-10.26434%2Fchemrxiv.15008876%2Fv1-blue.svg)](https://doi.org/10.26434/chemrxiv.15008876/v1)
 
 A reproducible materials-informatics study of **scanning electron microscopy (SEM) morphology classification**, designed around dataset integrity, leakage control, class imbalance, transfer learning, uncertainty calibration, explainability, and artifact robustness.
+
+## ChemRxiv preprint
+
+**Dennis Obinna Orji (2026). _Intelligent Microscopy for Materials: Leakage-Controlled SEM Morphology Classification with Calibration, Explainability, and Artifact Perturbation._ ChemRxiv, Version 1.**
+
+**DOI:** [10.26434/chemrxiv.15008876/v1](https://doi.org/10.26434/chemrxiv.15008876/v1)
+
+Published: **15 September 2026**
 
 ## Scientific question
 
@@ -114,7 +123,9 @@ The first archival software release is **v1.0.0**, preserved on Zenodo with DOI 
 
 https://doi.org/10.5281/zenodo.22720838
 
-Citation metadata are provided in `CITATION.cff`. The ChemRxiv preprint DOI will be added after the preprint record is published.
+Associated ChemRxiv preprint: **[10.26434/chemrxiv.15008876/v1](https://doi.org/10.26434/chemrxiv.15008876/v1)**.
+
+For the scientific study, cite the ChemRxiv preprint; for the frozen computational snapshot, cite the Zenodo archive. Machine-readable citation metadata are provided in `CITATION.cff`.
 
 ## Author
 
