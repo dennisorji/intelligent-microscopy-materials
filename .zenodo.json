@@ -28,6 +28,11 @@
       "identifier": "https://github.com/dennisorji/intelligent-microscopy-materials",
       "relation": "isSupplementTo",
       "scheme": "url"
+    },
+    {
+      "identifier": "10.26434/chemrxiv.15008876/v1",
+      "relation": "isSupplementTo",
+      "scheme": "doi"
     }
   ]
 }
